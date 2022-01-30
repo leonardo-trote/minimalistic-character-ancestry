@@ -20,6 +20,29 @@ Message Property LT07MCA_MerMenuOrsimer Auto
 Message Property LT07MCA_BeastMenuArgonian Auto
 Message Property LT07MCA_BeastMenuKhajiit Auto
 
+Message Property LT07MCA_HalfAltmerConfirmation Auto
+Message Property LT07MCA_HalfArgonianConfirmation Auto
+Message Property LT07MCA_HalfBosmerConfirmation Auto
+Message Property LT07MCA_HalfBretonConfirmation Auto
+Message Property LT07MCA_HalfDunmerConfirmation Auto
+Message Property LT07MCA_HalfImperialConfirmation Auto
+Message Property LT07MCA_HalfKhajiitConfirmation Auto
+Message Property LT07MCA_HalfNordConfirmation Auto
+Message Property LT07MCA_HalfOrsimerConfirmation Auto
+Message Property LT07MCA_HalfRedguardConfirmation Auto
+
+
+Spell Property LT07MCA_HalfAltmerIllusionAbility Auto
+Spell Property LT07MCA_HalfArgonianLockpickingAbility Auto
+Spell Property LT07MCA_HalfBosmerArcheryAbility Auto
+Spell Property LT07MCA_HalfBretonConjurationAbility Auto
+Spell Property LT07MCA_HalfDunmerDestructionAbility Auto
+Spell Property LT07MCA_HalfImperialRestorationAbility Auto
+Spell Property LT07MCA_HalfKhajiitSneakAbility Auto
+Spell Property LT07MCA_HalfNordTwoHandedAbility Auto
+Spell Property LT07MCA_HalfOrsimerHeavyArmorAbility Auto
+Spell Property LT07MCA_HalfRedguardOneHandedAbility Auto
+
 Race Property ArgonianRace auto
 Race Property BretonRace auto
 Race Property DarkElfRace auto
@@ -30,9 +53,15 @@ Race Property NordRace auto
 Race Property OrcRace auto
 Race Property RedguardRace auto
 Race Property WoodElfRace auto
-	
-Event OnEquipped(Actor akActor) 
-	MainMenu()
+
+int Cont = 0
+
+Event OnEquipped(Actor akActor)
+	If Cont > 0
+
+	Else
+		MainMenu()
+	EndIf
 endEvent
 
 
@@ -88,14 +117,13 @@ Function MenMenuAllOptions(int aiButton = 4)
 	If aiButton == 4
 
 	ElseIf aiButton  == 0
-		debug.messagebox("breton")
+		HalfBretonConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("imperial")
+		HalfImperialConfirmation()
 	ElseIf aiButton  == 2
-		debug.messagebox("nord")
+		HalfNordConfirmation()
 	ElseIf aiButton  == 3
-		debug.messagebox("redguard")
-
+		HalfRedguardConfirmation()
 	EndIf
 
 endFunction
@@ -107,11 +135,11 @@ Function MenMenuBreton(int aiButton = 3)
 	If aiButton == 3
 
 	ElseIf aiButton  == 0
-		debug.messagebox("imperial")
+		HalfImperialConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("nord")
+		HalfNordConfirmation()
 	ElseIf aiButton  == 2
-		debug.messagebox("redguard")
+		HalfRedguardConfirmation()
 	EndIf
 
 endFunction
@@ -123,11 +151,11 @@ Function MenMenuImperial(int aiButton = 3)
 	If aiButton == 3
 
 	ElseIf aiButton  == 0
-		debug.messagebox("breton")
+		HalfBretonConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("nord")
+		HalfBretonConfirmation()
 	ElseIf aiButton  == 2
-		debug.messagebox("redguard")
+		HalfRedguardConfirmation()
 	EndIf
 
 endFunction
@@ -139,11 +167,11 @@ Function MenMenuNord(int aiButton = 3)
 	If aiButton == 3
 
 	ElseIf aiButton  == 0
-		debug.messagebox("breton")
+		HalfBretonConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("imperial")
+		HalfImperialConfirmation()
 	ElseIf aiButton  == 2
-		debug.messagebox("redguard")
+		HalfRedguardConfirmation()
 	EndIf
 
 endFunction
@@ -155,11 +183,11 @@ Function MenMenuRedguard(int aiButton = 3)
 	If aiButton == 3
 
 	ElseIf aiButton  == 0
-		debug.messagebox("breton")
+		HalfBretonConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("imperial")
+		HalfImperialConfirmation()
 	ElseIf aiButton  == 2
-		debug.messagebox("nord")
+		HalfNordConfirmation()
 	EndIf
 
 endFunction
@@ -171,13 +199,13 @@ Function MerMenuAllOptions(int aiButton = 4)
 	If aiButton == 4
 
 	ElseIf aiButton  == 0
-		debug.messagebox("altmer")
+		HalfAltmerConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("bosmer")
+		HalfBosmerConfirmation()
 	ElseIf aiButton  == 2
-		debug.messagebox("dunmer")
+		HalfDunmerConfirmation()
 	ElseIf aiButton  == 3
-		debug.messagebox("orsimer")
+		HalfOrsimerConfirmation()
 
 	EndIf
 
@@ -190,11 +218,11 @@ Function MerMenuAltmer(int aiButton = 3)
 	If aiButton == 3
 
 	ElseIf aiButton  == 0
-		debug.messagebox("bosmer")
+		HalfBosmerConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("dunmer")
+		HalfDunmerConfirmation()
 	ElseIf aiButton  == 2
-		debug.messagebox("orsimer")
+		HalfOrsimerConfirmation()
 	EndIf
 endFunction
 
@@ -205,11 +233,11 @@ Function MerMenuBosmer(int aiButton = 3)
 	If aiButton == 3
 
 	ElseIf aiButton  == 0
-		debug.messagebox("altmer")
+		HalfAltmerConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("dunmer")
+		HalfDunmerConfirmation()
 	ElseIf aiButton  == 2
-		debug.messagebox("orsimer")
+		HalfOrsimerConfirmation()
 	EndIf
 endFunction
 
@@ -220,11 +248,11 @@ Function MerMenuDunmer(int aiButton = 3)
 	If aiButton == 3
 
 	ElseIf aiButton  == 0
-		debug.messagebox("altmer")
+		HalfAltmerConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("bosmer")
+		HalfBosmerConfirmation()
 	ElseIf aiButton  == 2
-		debug.messagebox("orsimer")
+		HalfOrsimerConfirmation()
 	EndIf
 endFunction
 
@@ -235,11 +263,11 @@ Function MerMenuOrsimer(int aiButton = 3)
 	If aiButton == 3
 
 	ElseIf aiButton  == 0
-		debug.messagebox("altmer")
+		HalfAltmerConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("bosmer")
+		HalfBosmerConfirmation()
 	ElseIf aiButton  == 2
-		debug.messagebox("dunmer")
+		HalfDunmerConfirmation()
 	EndIf
 endFunction
 
@@ -250,9 +278,9 @@ Function BeastMenuAllOptions(int aiButton = 2)
 	If aiButton == 2
 
 	ElseIf aiButton  == 0
-		debug.messagebox("argonian")
+		HalfArgonianConfirmation()
 	ElseIf aiButton  == 1
-		debug.messagebox("khajiit")
+		HalfKhajiitConfirmation()
 
 	EndIf
 
@@ -264,7 +292,7 @@ Function BeastMenuArgonian(int aiButton = 1)
 	If aiButton == 1
 
 	ElseIf aiButton  == 0
-		debug.messagebox("khajiit")
+		HalfKhajiitConfirmation()
 	EndIf
 
 endFunction
@@ -275,7 +303,107 @@ Function BeastMenuKhajiit(int aiButton = 1)
 	If aiButton == 1
 
 	ElseIf aiButton  == 0
-		debug.messagebox("argonian")
+		HalfArgonianConfirmation()
 	EndIf
 
+endFunction
+
+Function HalfAltmerConfirmation(int aiButton = 1)
+	aiButton = LT07MCA_HalfAltmerConfirmation.show()
+	If aiButton == 1
+
+	ElseIf aiButton  == 0
+		game.getPlayer().addSpell(LT07MCA_HalfAltmerIllusionAbility)
+		Cont = Cont + 1
+	EndIf
+endFunction
+
+Function HalfArgonianConfirmation(int aiButton = 1)
+	aiButton = LT07MCA_HalfArgonianConfirmation.show()
+	If aiButton == 1
+
+	ElseIf aiButton  == 0
+		game.getPlayer().addSpell(LT07MCA_HalfArgonianLockpickingAbility)
+		Cont = Cont + 1
+	EndIf
+endFunction
+
+Function HalfBosmerConfirmation(int aiButton = 1)
+	aiButton = LT07MCA_HalfBosmerConfirmation.show()
+	If aiButton == 1
+
+	ElseIf aiButton  == 0
+		game.getPlayer().addSpell(LT07MCA_HalfBosmerArcheryAbility)
+		Cont = Cont + 1
+	EndIf
+endFunction
+
+Function HalfBretonConfirmation(int aiButton = 1)
+	aiButton = LT07MCA_HalfBretonConfirmation.show()
+	If aiButton == 1
+
+	ElseIf aiButton  == 0
+		game.getPlayer().addSpell(LT07MCA_HalfBretonConjurationAbility)
+		Cont = Cont + 1
+	EndIf
+endFunction
+
+Function HalfDunmerConfirmation(int aiButton = 1)
+	aiButton = LT07MCA_HalfDunmerConfirmation.show()
+	If aiButton == 1
+
+	ElseIf aiButton  == 0
+		game.getPlayer().addSpell(LT07MCA_HalfDunmerDestructionAbility)
+		Cont = Cont + 1
+	EndIf
+endFunction
+
+Function HalfImperialConfirmation(int aiButton = 1)
+	aiButton = LT07MCA_HalfImperialConfirmation.show()
+	If aiButton == 1
+
+	ElseIf aiButton  == 0
+		game.getPlayer().addSpell(LT07MCA_HalfImperialRestorationAbility)
+		Cont = Cont + 1
+	EndIf
+endFunction
+
+Function HalfKhajiitConfirmation(int aiButton = 1)
+	aiButton = LT07MCA_HalfKhajiitConfirmation.show()
+	If aiButton == 1
+
+	ElseIf aiButton  == 0
+		game.getPlayer().addSpell(LT07MCA_HalfKhajiitSneakAbility)
+		Cont = Cont + 1
+	EndIf
+endFunction
+
+Function HalfNordConfirmation(int aiButton = 1)
+	aiButton = LT07MCA_HalfNordConfirmation.show()
+	If aiButton == 1
+
+	ElseIf aiButton  == 0
+		game.getPlayer().addSpell(LT07MCA_HalfNordTwoHandedAbility)
+		Cont = Cont + 1
+	EndIf
+endFunction
+
+Function HalfOrsimerConfirmation(int aiButton = 1)
+	aiButton = LT07MCA_HalfOrsimerConfirmation.show()
+	If aiButton == 1
+
+	ElseIf aiButton  == 0
+		game.getPlayer().addSpell(LT07MCA_HalfOrsimerHeavyArmorAbility)
+		Cont = Cont + 1
+	EndIf
+endFunction
+
+Function HalfRedguardConfirmation(int aiButton = 1)
+	aiButton = LT07MCA_HalfRedguardConfirmation.show()
+	If aiButton == 1
+
+	ElseIf aiButton  == 0
+		game.getPlayer().addSpell(LT07MCA_HalfRedguardOneHandedAbility)
+		Cont = Cont + 1
+	EndIf
 endFunction
